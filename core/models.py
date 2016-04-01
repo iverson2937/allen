@@ -86,9 +86,9 @@ class Article(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     is_public = models.BooleanField(default=True, blank=True)
-def delete(self):
- #self.is_public = False
-    signals.delete_done.send(sender=Article, obj=self)
+    def delete(self):
+     #self.is_public = False
+        signals.delete_done.send(sender=Article, obj=self)
 
 def __unicode__(self):
     return self.title
@@ -102,6 +102,6 @@ def zhutao(sender, kwargs):
         obj.save()
         logging.debug("signal recieved! zhutao is called.")
         logging.debug(obj.is_public)
-signals.delete_done.connect(zhutao, sender=Article)
+# signals.delete_done.connect(zhutao, sender=Article)
 
 
