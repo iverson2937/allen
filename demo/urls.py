@@ -14,17 +14,21 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from Demo import settings
-from core import views
+from demo import views
+from demo import settings
 from django.conf.urls import url, include, patterns
 from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-     url(r'^test/', include('core.urls')),
+    url(r'^test/', include('core.urls')),
+    url(r'', include('siteuser.urls')),
+    url(r'^$', views.home, name="home"),
+    url(r'^account/settings/?$', views.account_settings, name="account_settings"),
 ]
 if settings.DEBUG:
     import debug_toolbar
+
     urlpatterns += patterns('',
-        url(r'^__debug__/', include(debug_toolbar.urls)),
+                            url(r'^__debug__/', include(debug_toolbar.urls)),
     )

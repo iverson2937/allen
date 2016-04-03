@@ -4,9 +4,9 @@
     <data-source source="LOCAL" name="Django default" uuid="477d11dc-4b68-49b2-87dd-486771675171">
       <driver-ref>sqlite.xerial</driver-ref>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/portal</jdbc-url>
-      <user-name>postgres</user-name>
-      <user-password>dfcbdfc6dfc6dfcfdfc4dfdedfcbdfc5</user-password>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/demo01</jdbc-url>
+      <user-name>bloodhound</user-name>
+      <user-password>dfdedfcbdfc5dfd0dfc2dfcfdfc4df92df9edf9bdf9bdf99df9a</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="SQLite -" uuid="f821c3ce-3d70-4c5a-98cb-92896df5bb49">

@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/Demo.iml" filepath="$PROJECT_DIR$/.idea/Demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/../ITSY-master/.idea/ITSY-master.iml" filepath="$PROJECT_DIR$/../ITSY-master/.idea/ITSY-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/../capa/.idea/capa.iml" filepath="$PROJECT_DIR$/../capa/.idea/capa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../django-siteuser/example/.idea/example.iml" filepath="$PROJECT_DIR$/../django-siteuser/example/.idea/example.iml" />
       <module fileurl="file://$PROJECT_DIR$/../goldcap_d/.idea/goldcap_d.iml" filepath="$PROJECT_DIR$/../goldcap_d/.idea/goldcap_d.iml" />
       <module fileurl="file://$PROJECT_DIR$/../mezzaniene/.idea/mezzaniene.iml" filepath="$PROJECT_DIR$/../mezzaniene/.idea/mezzaniene.iml" />
       <module fileurl="file://$PROJECT_DIR$/../portal/.idea/portal.iml" filepath="$PROJECT_DIR$/../portal/.idea/portal.iml" />
