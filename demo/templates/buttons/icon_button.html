@@ -1,0 +1,30 @@
+{% if input.href %}
+    <a type="{{ input.input_type }}"
+       name="{% if input.name|wordcount > 1 %}{{ input.name|slugify }}{% else %}{{ input.name }}{% endif %}"
+       value="{{ input.value }}"
+        {% if input.input_type != "hidden" %}
+       class="{{ input.field_classes }}"
+       id="{% if input.id %}{{ input.id }}{% else %}{{ input.input_type }}-id-{{ input.name|slugify }}{% endif %}"
+        {% endif %}
+        {% if input.href %}
+       href="{{ input.href }}"
+        {% endif %}
+        {{ input.flat_attrs|safe }}
+    >
+        {% if input.icon %}<i class="{{ input.icon }}"></i>{% endif %}
+        {{ input.value }}
+    </a>
+{% else %}
+    <button type="{{ input.input_type }}"
+            name="{% if input.name|wordcount > 1 %}{{ input.name|slugify }}{% else %}{{ input.name }}{% endif %}"
+            value="{{ input.value }}"
+        {% if input.input_type != "hidden" %}
+            class="{{ input.field_classes }}"
+            id="{% if input.id %}{{ input.id }}{% else %}{{ input.input_type }}-id-{{ input.name|slugify }}{% endif %}"
+        {% endif %}
+        {{ input.flat_attrs|safe }}
+    >
+        {% if input.icon %}<i class="{{ input.icon }}"></i>{% endif %}
+        {{ input.value }}
+    </button>
+{% endif %}

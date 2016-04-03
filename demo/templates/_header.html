@@ -1,0 +1,72 @@
+{% load staticfiles %}
+{% load sekizai_tags %}
+{% load i18n %}
+{#{% load sitetree %}#}
+
+<header class="header">
+    <a href="{% url 'index' %}" class="logo">
+        <img src="{% static 'images/bh_logo.png' %}" alt="Goldcap" />
+        <span class="gcap-font"><span class="gcap-font-lg">G</span>OLD<span class="gcap-font-lg">C</span>AP</span>
+    </a>
+
+    <nav class="navbar navbar-static-top" role="navigation">
+        <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas"
+           role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
+
+        {% if user.is_authenticated %}
+            <div id="metanav" class="navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="first">
+                        {% block header_link %}
+{#                            <a href="{% url 'account_list' %}">#}
+{#                                Admin#}
+{#                            </a>#}
+                        {% endblock header_link %}
+                    </li>
+                    <li class="last">
+                    </li>
+                    <li class="dropdown user user-menu">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <a href="#" class="dropdown-toggle"
+                           data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span>{{ request.user }} <i
+                                    class="caret"></i></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header bg-light-blue">
+                                <img src="{% static 'images/default_avatar.png' %}"
+                                     class="img-circle" alt="User Image">
+                                <p>
+                                    {{ request.user }}
+                                    <small></small>
+                                </p>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+{#                                    <a href="{% url 'general' %}"#}
+{#                                       class="btn btn-default btn-flat">#}
+{#                                        Profile#}
+{#                                    </a>#}
+                                </div>
+                                <div class="pull-right">
+{#                                    <a href="{% url 'logout' %}"#}
+{#                                       class="btn btn-default btn-flat">#}
+{#                                        Logout#}
+{#                                    </a>#}
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        {% endif %}
+    </nav>
+</header>

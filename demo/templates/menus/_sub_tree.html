@@ -1,0 +1,26 @@
+{% load staticfiles %}
+{% load sekizai_tags %}
+{% load i18n %}
+{% load sitetree %}
+
+<ul class="treeview-menu">
+    {% for item in sitetree_items %}
+        {% if item.insitetree %}
+            <li class="{% if item.has_children %}treeview{% endif %} {% if item.is_current or item.in_current_branch %}active{% endif %}">
+                <a href="{% sitetree_url for item %}"
+                   {% if item.hint %}title="{{ item.hint }}"{% endif %}>
+                    {% if item.icon %}
+                        <i class="{{ item.icon }}"></i>
+                    {% endif %}
+                    {{ item.title_resolved }}
+                    {% if item.has_children %}
+                        <i class="fa fa-angle-left pull-right"></i>
+                    {% endif %}
+                </a>
+            </li>
+            {% if item.has_children %}
+                {% sitetree_children of item for sitetree template "_left_sub_tree.html" %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</ul>

@@ -1,0 +1,8 @@
+{% extends '_header.html' %}
+{% load i18n %}
+
+{% block header_link %}
+    <a href="{% url 'index' %}">
+        {% trans 'Home' %}
+    </a>
+{% endblock header_link %}

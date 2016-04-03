@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load sekizai_tags %}
+{% load staticfiles %}
+{% load goldcap_chart_tags %}
+{% load i18n %}
+
+{% block content_header %}
+    <h1>{% trans 'Dashboard' %}</h1>
+{% endblock content_header %}
+
+{% block content %}
+    <div class="row">
+        {% dashboard_treeview overview_data %}
+        {% for datatable in datatables %}
+            {% dashboard_tableview datatable %}
+        {% endfor %}
+        {% dashboard_view overdue_data %}
+        {% dashboard_view overdue_data_one %}
+    </div>
+{% endblock %}
+
+{% block content_footer %}
+    <script src={% static "js/flot/jquery.flot.js" %}></script>
+    <script src={% static "js/flot/jquery.flot.resize.js" %}></script>
+    <script src={% static "js/flot/jquery.flot.categories.js" %}></script>
+    <script src={% static "js/flot/jquery.flot.stack.js" %}></script>
+    <script src={% static "js/flot/jquery.flot.tooltip.js" %}></script>
+    <script src={% static "js/flot/jquery.flot.bullet.js" %}></script>
+    <script src={% static "js/flot/jquery.flot.barnumbers.enhanced.js" %}></script>
+    <script src={% static "js/flot/jquery.goldcap.dashboard.1.0.0.js" %}></script>
+    {% block js %}
+        {% addtoblock 'js' %}
+            <script type="text/javascript">
+                $(function () {
+                    datatableview.auto_initialize = false;
+                    $(function () {
+                        var common_options = {
+                            "oLanguage": {
+                                "sInfo": "Results (_START_ - _END_ of _TOTAL_)",
+                                "sInfoEmpty": "Results (0 - 0 of 0)",
+                                "sEmptyTable": "No results",
+                                "zeroRecords": "No results",
+                                "oPaginate": {
+                                    "sFirst": "&lt;&lt;",
+                                    "sPrevious": "&lt;",
+                                    "sNext": "&gt;",
+                                    "sLast": "&gt;&gt;"
+                                }
+                            },
+                            iDisplayLength: 10,
+                            "bFilter": false,
+                            "bLengthChange": false,
+                            "processing": true,
+                            "serverSide": true
+                        };
+                        datatableview.initialize($('.datatable'),
+                                common_options).addClass('listing table-condensed').css('width', '100%');
+                    });
+                });
+            </script>
+        {% endaddtoblock %}
+
+    {% endblock js %}
+{% endblock %}
+

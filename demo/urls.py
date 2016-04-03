@@ -21,10 +21,8 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^test/', include('core.urls')),
-    url(r'', include('siteuser.urls')),
-    url(r'^$', views.home, name="home"),
-    url(r'^account/settings/?$', views.account_settings, name="account_settings"),
+     url(r'', views.home,name='index'),
+
 ]
 if settings.DEBUG:
     import debug_toolbar

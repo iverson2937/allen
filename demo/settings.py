@@ -43,11 +43,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
-    'demo1',
     'demo',
     'avatar',
     'djcelery',
+    'debug_toolbar',
+    'notify',
+    'upload_avatar',
+    'users',
+
+    'sekizai',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -60,7 +65,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'siteuser.middleware.User'
 ]
 
 ROOT_URLCONF = 'demo.urls'
@@ -76,7 +80,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'siteuser.context_processors.social_sites'
+                'siteuser.context_processors.social_sites',
+                'sekizai.context_processors.sekizai'
             ],
         },
     },

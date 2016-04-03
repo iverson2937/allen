@@ -1,0 +1,74 @@
+{% extends '_base.html' %}
+{% load sekizai_tags %}
+{% load staticfiles %}
+{% load sitetree %}
+{% load i18n %}
+
+{% block title %}{% sitetree_page_title from "goldcap_admin" %}{% endblock title %}
+
+{% block top_nav_right %}
+    {% include "_header_admin.html" %}
+{% endblock top_nav_right %}
+
+{% block body %}
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+        {% block sitetree_menu %}
+            {% sitetree_menu from "goldcap_admin" include "trunk" template "menus/_tree.html" %}
+        {% endblock sitetree_menu %}
+        <aside class="right-side">
+            {% if messages %}
+                {% for message in messages %}
+                    {% ifequal message.tags 'success' %}
+                        <div id="notice" class="alert alert-success fade in" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">
+                                ×
+                            </button>
+                            <span class="label label-success">Success</span>
+                            <span>{{ message }}</span>
+                        </div>
+                    {% endifequal %}
+                    {% ifequal message.tags 'error' %}
+                        <div id="warning" class="alert alert-warning fade in" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <span class="label label-warning">Warning</span>
+                            <span>{{ message }}</span>
+                        </div>
+                    {% endifequal %}
+                {% endfor %}
+            {% endif %}
+
+            <section class="content-header">
+                {% block content_header %}
+                {% endblock content_header %}
+            </section>
+
+            <section class="content">
+                <div class="clearfix"></div>
+
+                {% block content %}
+                {% endblock content %}
+            </section>
+        </aside>
+    </div>
+
+    {% addtoblock 'css' %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap3-wysihtml5.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-editable.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/select2.css' %}" />
+    {% endaddtoblock %}
+
+    {% addtoblock 'js' %}
+        <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+        <script src="{% static 'js/select2.js' %}"></script>
+        <script src="{% static 'js/bootstrap3-wysihtml5.all.min.js' %}"></script>
+        <script src="{% static "js/fm.js" %}"></script>
+        <script src="{% static 'js/jsPlumb-2.0.7-min.js' %}"></script>
+
+        <script src="{% static 'js/adminlte-app.js' %}"></script>
+        <script src="{% static 'js/jquery.goldcap.1.0.0.js' %}"></script>
+        {% block content_footer %}
+        {% endblock content_footer %}
+    {% endaddtoblock %}
+{% endblock body %}
